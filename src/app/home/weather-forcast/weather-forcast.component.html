@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <h3 class="text-center my-4">Search for Forecast Weather</h3>
+            <form [formGroup]="forecastSearchForm" (ngSubmit)="getForecastData(forecastSearchForm.value)">
+                <div class="form-group">
+                    <input class="form-control" type="text" id="latitude" placeholder="Please enter a latitude"
+                        formControlName="latitude"/>
+                    <input class="form-control" type="text" id="longitude" placeholder="Please enter a longitude"
+                        formControlName="longitude"/>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-success btn-md">
+                        Search for forecast weather
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-8">
+            <mat-tab-group>
+                <mat-tab label="Graphical View">
+                    <app-chart [forecastData]="forecastData"></app-chart>
+                </mat-tab>
+                <mat-tab label="Tabular View">
+                    <app-table [forecastData]="forecastData"></app-table>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+    </div>
+</div>

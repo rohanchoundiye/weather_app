@@ -1,0 +1,36 @@
+<div class="card" *ngIf="data ; else NoForcastData">
+    <p-table #dt [value]="data" dataKey="id" styleClass="p-datatable-customers" [rows]="10"
+        [showCurrentPageReport]="true" [paginator]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [globalFilterFields]="['date','highTemp','lowTemp','description']" sortMode="multiple">
+        <ng-template pTemplate="caption">
+            <div class="p-d-flex">
+                <span class="p-input-icon-left p-ml-auto">
+                    <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+                        placeholder="Search keyword" />
+                </span>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th pSortableColumn="date">Date <p-sortIcon field="date"></p-sortIcon>
+                </th>
+                <th pSortableColumn="highTemp">High Temperature <p-sortIcon field="highTemp"></p-sortIcon>
+                </th>
+                <th pSortableColumn="lowTemp">Low Temperature <p-sortIcon field="lowTemp"></p-sortIcon>
+                </th>
+                <th pSortableColumn="description">Weather Description <p-sortIcon field="description"></p-sortIcon>
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-data>
+            <tr>
+                <td>{{data.date | date }}</td>
+                <td>{{data.highTemp}}</td>
+                <td>{{data.lowTemp}}</td>
+                <td>{{data.description}}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+<ng-template #NoForcastData> No Data Available</ng-template>
