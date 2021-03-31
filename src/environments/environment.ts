@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  AppId: '72b2b1d498d78df2c4ccae7d4d9d3839',
+  AppId: '',
   baseURLForWeather: 'http://api.openweathermap.org/data/2.5/',
   baseURLForForecast: 'https://api.openweathermap.org/data/2.5/',
 };
